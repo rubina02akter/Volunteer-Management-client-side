@@ -24,10 +24,10 @@ const Navbar = () => {
         <ul className="dropdown-menu">
           
           <li>
-            <Link to="/add-post">Add Post</Link>
+            <Link to="/add-volunteer-need-post">Add Post</Link>
           </li>
           <li>
-            <Link to="/manage-my-posts">Manage My Posts</Link>
+            <Link to="/my-posts">Manage My Posts</Link>
           </li>
         </ul>
       </li>

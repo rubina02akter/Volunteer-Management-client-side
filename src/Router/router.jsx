@@ -5,6 +5,9 @@ import LogIn from "../Authentication/LogIn";
 import Register from "../Authentication/Register";
 import AllPost from "../Pages/AllVolNeedPosts/AllPost";
 import PostDetails from "../Pages/AllVolNeedPosts/PostDetails";
+import CardsDetail from "../Pages/Home/CardsDetail";
+import AddPost from "../Pages/AddPost/AddPost";
+import MyPosts from "../Pages/MyPosts/MyPosts";
 
 
 
@@ -24,14 +27,26 @@ const router = createBrowserRouter([
 
       },
       {
-        path:'/add-vol-need-post',
-        element:<AllPost></AllPost>,
+        path:'/add-volunteer-need-post',
+        element:<AddPost></AddPost>,
 
       },
+     
+      {
+        path:'/my-posts',
+        element:<MyPosts></MyPosts>,
+
+      },
+     
       {
         path:'/volunteer-need-post-details/:id',
         element:<PostDetails></PostDetails>,
-        loader:({params})=>fetch(`http://localhost:5000/posts/${params.id}`)
+        loader:({params})=>fetch(`https://server-side-rho-lemon.vercel.app/posts/${params.id}`)
+      },
+      {
+        path:'/upcoming-deadlines/:id',
+        element:<CardsDetail></CardsDetail>,
+        loader:({params})=>fetch(`https://server-side-rho-lemon.vercel.app/upcoming-deadlines/${params.id}`)
       },
       {
         path:'login',

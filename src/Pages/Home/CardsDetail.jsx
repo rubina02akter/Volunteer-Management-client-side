@@ -1,11 +1,10 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 
-const PostDetails = () => {
-  const data = useLoaderData();
-  console.log(data);
-
-  const { _id,
+const CardsDetail = () => {
+  const cardData = useLoaderData();
+  console.log(cardData);
+  const{ _id,
     thumbnail,
     title,
     description,
@@ -14,8 +13,7 @@ const PostDetails = () => {
     volunteersNeeded,
     deadline,
     organizerName,
-    organizerEmail} = data;
-
+    organizerEmail,}= cardData
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl max-w-screen-md mx-auto my-4">
     <figure className="w-full lg:w-1/3">
@@ -37,11 +35,11 @@ const PostDetails = () => {
         <p>Email: {organizerEmail}</p>
       </div>
       <div className="card-actions justify-end">
-        <button className="btn btn-primary">Be a Volunteer</button>
+        <Link to='/' className="btn btn-primary">Go back</Link>
       </div>
     </div>
   </div>
   );
 };
 
-export default PostDetails;
+export default CardsDetail;

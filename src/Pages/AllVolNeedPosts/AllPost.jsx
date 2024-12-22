@@ -6,7 +6,7 @@ const AllPost = () => {
 
   useEffect(()=>{
     //fetch all posts
-    fetch('http://localhost:5000/posts')
+    fetch('https://server-side-rho-lemon.vercel.app/posts')
     .then(res=>res.json())
     .then(data=>{
       setPosts(data)

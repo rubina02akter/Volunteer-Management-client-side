@@ -1,18 +1,16 @@
 import { Link } from "react-router-dom";
 
-const AllPostCard = ({ post }) => {
-  const {
-    _id,
-    thumbnail,
-    title,
-    description,
-    category,
-    location,
-    volunteersNeeded,
-    deadline,
-    organizerName,
-    organizerEmail,
-  } = post;
+const HomeCards = ({card}) => {
+ const{ _id,
+  thumbnail,
+  title,
+  description,
+  category,
+  location,
+  volunteersNeeded,
+  deadline,
+  organizerName,
+  organizerEmail,} = card;
 
   return (
     <div className="card card-compact bg-base-100  shadow-xl border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
@@ -37,7 +35,7 @@ const AllPostCard = ({ post }) => {
 
         {/* Actions */}
         <div className="card-actions mt-4 justify-end">
-          <Link to={`/volunteer-need-post-details/${_id}`}>
+          <Link to={`/upcoming-deadlines/${_id}`}>
             <button className="btn btn-primary">View Details</button>
           </Link>
         </div>
@@ -46,4 +44,4 @@ const AllPostCard = ({ post }) => {
   );
 };
 
-export default AllPostCard;
+export default HomeCards;
