@@ -1,0 +1,123 @@
+[
+  {
+    "id": 1,
+    "thumbnail": "https://i.ibb.co.com/M5FJwn8/img1.jpg",
+    "title": "Community Health Camp",
+    "description": "Organize a free health camp for the local community.",
+    "category": "Healthcare",
+    "location": "Dhaka, Bangladesh",
+    "volunteersNeeded": 10,
+    "deadline": "2024-12-30",
+    "organizerName": "Rahima Begum",
+    "organizerEmail": "rahima@example.com"
+  },
+  {
+    "id": 2,
+    "thumbnail": "https://i.ibb.co.com/7nVmks7/post2.jpg",
+    "title": "After-school Tutoring Program",
+    "description": "Provide tutoring for underprivileged children in math and science.",
+    "category": "Education",
+    "location": "Chattogram, Bangladesh",
+    "volunteersNeeded": 5,
+    "deadline": "2024-12-28",
+    "organizerName": "Rafiq Ahmed",
+    "organizerEmail": "rafiq@example.com"
+  },
+  {
+    "id": 3,
+    "thumbnail": "https://example.com/image3.jpg",
+    "title": "Animal Shelter Support",
+    "description": "Assist in feeding and caring for stray animals.",
+    "category": "Animal Welfare",
+    "location": "Sylhet, Bangladesh",
+    "volunteersNeeded": 8,
+    "deadline": "2024-12-31",
+    "organizerName": "Salma Khatun",
+    "organizerEmail": "salma@example.com"
+  },
+  {
+    "id": 4,
+    "thumbnail": "https://example.com/image4.jpg",
+    "title": "River Clean-up Drive",
+    "description": "Help clean plastic waste from the Buriganga River.",
+    "category": "Social Service",
+    "location": "Dhaka, Bangladesh",
+    "volunteersNeeded": 15,
+    "deadline": "2024-12-27",
+    "organizerName": "Zahid Hossain",
+    "organizerEmail": "zahid@example.com"
+  },
+  {
+    "id": 5,
+    "thumbnail": "https://example.com/image5.jpg",
+    "title": "Tree Plantation Campaign",
+    "description": "Plant trees to improve greenery and reduce pollution.",
+    "category": "Social Service",
+    "location": "Rajshahi, Bangladesh",
+    "volunteersNeeded": 12,
+    "deadline": "2024-12-29",
+    "organizerName": "Mina Akter",
+    "organizerEmail": "mina@example.com"
+  },
+  {
+    "id": 6,
+    "thumbnail": "https://example.com/image6.jpg",
+    "title": "Food Distribution Drive",
+    "description": "Distribute food to homeless people in the area.",
+    "category": "Social Service",
+    "location": "Khulna, Bangladesh",
+    "volunteersNeeded": 7,
+    "deadline": "2024-12-25",
+    "organizerName": "Rahman Ali",
+    "organizerEmail": "rahman@example.com"
+  },
+  {
+    "id": 7,
+    "thumbnail": "https://example.com/image7.jpg",
+    "title": "Blood Donation Camp",
+    "description": "Organize a blood donation camp for local hospitals.",
+    "category": "Healthcare",
+    "location": "Barisal, Bangladesh",
+    "volunteersNeeded": 20,
+    "deadline": "2024-12-24",
+    "organizerName": "Sultana Parvin",
+    "organizerEmail": "sultana@example.com"
+  },
+  {
+    "id": 8,
+    "thumbnail": "https://example.com/image8.jpg",
+    "title": "Teaching Digital Skills",
+    "description": "Train women in basic computer and digital skills.",
+    "category": "Education",
+    "location": "Dhaka, Bangladesh",
+    "volunteersNeeded": 6,
+    "deadline": "2024-12-26",
+    "organizerName": "Ayesha Noor",
+    "organizerEmail": "ayesha@example.com"
+  },
+  {
+    "id": 9,
+    "thumbnail": "https://example.com/image9.jpg",
+    "title": "Wildlife Conservation Workshop",
+    "description": "Raise awareness about wildlife protection.",
+    "category": "Animal Welfare",
+    "location": "Sundarbans, Bangladesh",
+    "volunteersNeeded": 10,
+    "deadline": "2024-12-30",
+    "organizerName": "Habib Ullah",
+    "organizerEmail": "habib@example.com"
+  },
+  {
+    "id": 10,
+    "thumbnail": "https://example.com/image10.jpg",
+    "title": "Senior Citizen Assistance Program",
+    "description": "Help senior citizens with daily tasks and social interaction.",
+    "category": "Social Service",
+    "location": "Mymensingh, Bangladesh",
+    "volunteersNeeded": 4,
+    "deadline": "2024-12-28",
+    "organizerName": "Nazmul Islam",
+    "organizerEmail": "nazmul@example.com"
+  }
+  
+]

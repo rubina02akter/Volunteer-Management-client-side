@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import '../../App.css';
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const links = (
@@ -9,26 +10,36 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/allPost">All voluteer need posts</Link>
+        <Link to="/all-vol-need-post">All Posts</Link>
       </li>
       {!user && (
         <li>
           <Link to="/login">Login</Link>
         </li>
       )}
-      {user && (
-        <li>
-          <Link to="/">My Profile</Link>
-        </li>
-      )}
+
+       {user && (
+      <li className="dropdown2">
+        <button className="dropdown-button">My Profile</button>
+        <ul className="dropdown-menu">
+          
+          <li>
+            <Link to="/add-post">Add Post</Link>
+          </li>
+          <li>
+            <Link to="/manage-my-posts">Manage My Posts</Link>
+          </li>
+        </ul>
+      </li>
+    )}
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm container px-4 mx-auto">
+    <div className="navbar bg-base-100 shadow-sm container  mx-auto mb-12">
       <div className="flex-1">
         <Link to="/" className="flex gap-2 items-center">  
-          <span className="font-bold">Volunteer Management</span>
+          <span className="font-bold">VolunLink</span>
         </Link>
       </div>
       <div className="flex-none">
@@ -51,7 +62,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box md:w-52 w-32 text-xs"
             >
             {links}
              
