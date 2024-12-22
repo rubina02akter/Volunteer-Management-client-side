@@ -8,6 +8,8 @@ import PostDetails from "../Pages/AllVolNeedPosts/PostDetails";
 import CardsDetail from "../Pages/Home/CardsDetail";
 import AddPost from "../Pages/AddPost/AddPost";
 import MyPosts from "../Pages/MyPosts/MyPosts";
+import MyList from "../Pages/BeVolunteer/MyList";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -28,24 +30,30 @@ const router = createBrowserRouter([
       },
       {
         path:'/add-volunteer-need-post',
-        element:<AddPost></AddPost>,
+        element:<PrivateRoute><AddPost></AddPost></PrivateRoute>,
 
       },
      
       {
         path:'/my-posts',
-        element:<MyPosts></MyPosts>,
+        element:<PrivateRoute><MyPosts /></PrivateRoute>,
+
+      },
+     
+      {
+        path:'/be-volunteer',
+        element:<PrivateRoute><MyList /></PrivateRoute>,
 
       },
      
       {
         path:'/volunteer-need-post-details/:id',
-        element:<PostDetails></PostDetails>,
+        element:<PrivateRoute><PostDetails></PostDetails></PrivateRoute>,
         loader:({params})=>fetch(`https://server-side-rho-lemon.vercel.app/posts/${params.id}`)
       },
       {
         path:'/upcoming-deadlines/:id',
-        element:<CardsDetail></CardsDetail>,
+        element:<PrivateRoute><CardsDetail></CardsDetail></PrivateRoute>,
         loader:({params})=>fetch(`https://server-side-rho-lemon.vercel.app/upcoming-deadlines/${params.id}`)
       },
       {

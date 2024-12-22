@@ -12,6 +12,7 @@ const Navbar = () => {
       <li>
         <Link to="/all-vol-need-post">All Posts</Link>
       </li>
+     
       {!user && (
         <li>
           <Link to="/login">Login</Link>
@@ -19,6 +20,12 @@ const Navbar = () => {
       )}
 
        {user && (
+
+        <>
+        <li>
+        <Link to="/be-volunteer">Be volunteer</Link>
+      </li>
+         
       <li className="dropdown2">
         <button className="dropdown-button">My Profile</button>
         <ul className="dropdown-menu">
@@ -31,6 +38,8 @@ const Navbar = () => {
           </li>
         </ul>
       </li>
+      </>
+      
     )}
     </>
   );
