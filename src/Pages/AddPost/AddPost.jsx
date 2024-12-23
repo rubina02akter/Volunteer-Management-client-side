@@ -12,16 +12,16 @@ const AddPost = () => {
     e.preventDefault();
     const form = e.target;
     const thumbnail = form.thumbnail.value;
-    const post_title = form.post_title.value;
+    const title = form.title.value;
     const category = form.category.value;
     const deadline = form.deadline.value;
     const location = form.location.value;
-    const number = form.volunteers_needed.value;
+    const volunteersNeeded = parseInt(form.volunteers_needed.value);
     const description = form.description.value;
     const organizerName = form.organizerName.value;
-    const organizer_email = form.organizer_email.value;
+    const organizerEmail = form.organizerEmail.value;
 
-    const newPost = {thumbnail,post_title,category,deadline,location,number,description,organizerName,organizer_email};
+    const newPost = {thumbnail,title,category,deadline,location,volunteersNeeded,description,organizerName,organizerEmail};
 
     console.log(newPost);
 
@@ -77,7 +77,7 @@ const AddPost = () => {
               </label>
               <input
                 id='post_title'
-                name='post_title'
+                name='title'
                 type='text'
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring'
               />
@@ -154,7 +154,7 @@ const AddPost = () => {
               id='organizerName'
               name='organizerName'
               type='text'
-              value={user?.displayName || ''}
+              value={user?.displayName || 'user'}
               readOnly
               className='block w-full px-4 py-2 mt-2 text-gray-700 bg-gray-200 border border-gray-200 rounded-md focus:outline-none'
             />

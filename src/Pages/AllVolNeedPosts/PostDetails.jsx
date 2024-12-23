@@ -1,5 +1,5 @@
 
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 
 
@@ -9,6 +9,8 @@ const PostDetails = () => {
  
 
   console.log(data);
+
+
 
   const {
     _id,
@@ -22,6 +24,8 @@ const PostDetails = () => {
     organizerName,
     organizerEmail,
   } = data;
+
+  
 
 
  
@@ -47,9 +51,11 @@ const PostDetails = () => {
           <p>Email: {organizerEmail}</p>
         </div>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">
-            Be a Volunteer
-          </button>
+          <Link to={`/be-volunteer/${_id}`}><button
+         
+         className="btn btn-primary">
+          Be a Volunteer
+        </button></Link>
         </div>
       </div>
     </div>

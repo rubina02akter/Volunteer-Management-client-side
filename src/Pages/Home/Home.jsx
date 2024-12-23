@@ -10,7 +10,6 @@ const Home = () => {
     fetch("https://server-side-rho-lemon.vercel.app/upcoming-deadlines")
       .then((res) => res.json())
       .then((data) => {
-        // const games = data.sort((a, b) => b.rating - a.rating);
         setCards(data);
       })
       .catch((error) => console.error("Error fetching data:", error));

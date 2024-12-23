@@ -10,6 +10,7 @@ import AddPost from "../Pages/AddPost/AddPost";
 import MyPosts from "../Pages/MyPosts/MyPosts";
 import MyList from "../Pages/BeVolunteer/MyList";
 import PrivateRoute from "./PrivateRoute";
+import UpdateMyPost from "../Pages/MyPosts/UpdateMyPost";
 
 
 
@@ -41,9 +42,14 @@ const router = createBrowserRouter([
       },
      
       {
-        path:'/be-volunteer',
+        path:'/be-volunteer/:_id',
         element:<PrivateRoute><MyList /></PrivateRoute>,
 
+      },
+      {
+        path:'/update-post/:_id',
+        element:<PrivateRoute><UpdateMyPost></UpdateMyPost></PrivateRoute>,
+        // loader: ({ params }) =>fetch(`https://server-side-rho-lemon.vercel.app/my-posts/${params._id}`)
       },
      
       {

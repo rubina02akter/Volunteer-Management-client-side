@@ -1,91 +1,138 @@
+import userIcon from "../../assets/icons/user.png";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import "../../App.css";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+
+import { FaMoon, FaSun } from "react-icons/fa";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../Provider/AuthProvider";
-import '../../App.css';
+
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        toast.success("Log Out Successfully!", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+        navigate("/");
+      })
+      .catch((error) => console.log("ERROR", error.message));
+  };
+
   const links = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <Link to="/all-vol-need-post">All Posts</Link>
+        <NavLink to="/all-vol-need-post">All Post</NavLink>
       </li>
-     
-      {!user && (
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-      )}
-
-       {user && (
-
+      {user && (
         <>
-        <li>
-        <Link to="/be-volunteer">Be volunteer</Link>
-      </li>
-         
-      <li className="dropdown2">
-        <button className="dropdown-button">My Profile</button>
-        <ul className="dropdown-menu">
           
-          <li>
-            <Link to="/add-volunteer-need-post">Add Post</Link>
+          <li className="dropdown2">
+            <button className="dropdown-button">My Profile</button>
+            <ul className="dropdown-menu">
+              <li>
+                <Link to="/add-volunteer-need-post">Add Post</Link>
+              </li>
+              <li>
+                <Link to="/my-posts">Manage My Posts</Link>
+              </li>
+            </ul>
           </li>
-          <li>
-            <Link to="/my-posts">Manage My Posts</Link>
-          </li>
-        </ul>
-      </li>
-      </>
-      
-    )}
+        </>
+      )}
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm container  mx-auto mb-12">
-      <div className="flex-1">
-        <Link to="/" className="flex gap-2 items-center">  
-          <span className="font-bold">VolunLink</span>
-        </Link>
-      </div>
-      <div className="flex-none">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
-
-        {user && (
-          <div className="dropdown dropdown-end z-50">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
+    <div className="navbar pt-6">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <div title={user?.displayName} className="w-10 rounded-full">
-                <img
-                  referrerPolicy="no-referrer"
-                  alt="User Profile Photo"
-                  src={user?.photoURL}
-                />
-              </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box md:w-52 w-32 text-xs"
-            >
-            {links}
-             
-              <li className='mt-2'>
-                <button
-                  onClick={signOutUser}
-                  className='bg-gray-200 block text-center'
-                >
-                  Logout
-                </button>
-              </li>
-            </ul>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
           </div>
-        )}
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[2] mt-3 w-52 p-2 shadow text-black"
+          >
+            {links}
+          </ul>
+        </div>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1 space-x-3">{links}</ul>
+      </div>
+      <div className="navbar-end">
+        {/* Dark Mode Toggle (Optional) */}
+        {/* <button
+          className="bg-none rounded-full mr-2"
+        >
+          {darkMode ? <FaSun className="text-yellow-500 w-8 h-6" /> : <FaMoon className="w-8 h-6" />}
+        </button> */}
+        <div>
+          {user ? (
+            <div className="dropdown dropdown-end z-50">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div
+                  title={user?.displayName || "User"}
+                  className="w-10 rounded-full"
+                >
+                  <img
+                    referrerPolicy="no-referrer"
+                    alt="User Profile Photo"
+                    src={user?.photoURL || userIcon} // Added fallback
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box md:w-52 w-32 text-xs"
+              >
+                <li>{links}</li>
+                <li className="mt-2">
+                  <button
+                    onClick={handleSignOut} // Use handleSignOut here
+                    className="bg-gray-200 block text-center"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <>
+              <Link className="btn btn-outline ml-3 " to="/login">
+                Log in
+              </Link>
+              <Link className="btn btn-outline ml-3 " to="/register">
+                Register
+              </Link>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
