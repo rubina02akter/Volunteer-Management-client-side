@@ -16,7 +16,7 @@ const CardsDetail = () => {
   } = cardData;
 
   return (
-    <div className="hero bg-base-200 ">
+    <div className="hero bg-[#DEE5D9] pb-16">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <img
           src={thumbnail}
@@ -35,7 +35,7 @@ const CardsDetail = () => {
             <p><strong>Email:</strong> {organizerEmail}</p>
           </div>
           <div className="card-actions  mt-4">
-            <Link to="/" className="btn btn-primary">Go Back</Link>
+            <Link to="/" className="btn btn-lg bg-gradient-to-r from-[#228d79] to-[#186c5b] text-white">Go Back</Link>
           </div>
         </div>
       </div>

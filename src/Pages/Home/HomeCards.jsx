@@ -13,7 +13,7 @@ const HomeCards = ({ card }) => {
   } = card;
 
   return (
-    <div className="card  border rounded-lg shadow-lg p-4">
+    <div className="card  border rounded-lg shadow-lg p-4 bg-[#DEE5D9]">
      <div className="h-36">
        {/* Category Badge */}
        <div className="mb-2">
@@ -45,7 +45,7 @@ const HomeCards = ({ card }) => {
             Volunteers Needed: {volunteersNeeded}
           </span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2.5">
+        <div className="w-full bg-white rounded-full h-2.5">
           <div
             className="bg-[#228d79] h-2.5 rounded-full"
             style={{ width: `${(volunteersNeeded / 10) * 100}%` }} // Adjust percentage dynamically if needed

@@ -15,7 +15,7 @@ const AllPostCard = ({ post }) => {
   } = post;
 
   return (
-    <div className="card card-compact bg-base-100  shadow-xl border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
+    <div className="card card-compact bg-[#DEE5D9]   border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
       {/* Image */}
       <figure>
         <img src={thumbnail} alt={title} className="w-full h-48 object-cover" />
@@ -38,7 +38,7 @@ const AllPostCard = ({ post }) => {
         {/* Actions */}
         <div className="card-actions mt-4 justify-end">
           <Link to={`/volunteer-need-post-details/${_id}`}>
-            <button className="btn btn-primary">View Details</button>
+            <button className="btn text-white bg-gradient-to-r from-[#228d79] to-[#148161]">View Details</button>
           </Link>
         </div>
       </div>

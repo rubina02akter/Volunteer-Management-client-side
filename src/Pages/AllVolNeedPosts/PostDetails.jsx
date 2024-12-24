@@ -16,7 +16,7 @@ const PostDetails = () => {
   } = data;
 
   return (
-    <div className="hero bg-base-200">
+    <div className="hero bg-[#DEE5D9] pb-20 ">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <img
           src={thumbnail}
@@ -35,7 +35,7 @@ const PostDetails = () => {
             <p><strong>Email:</strong> {organizerEmail}</p>
           </div>
           <div className="card-actions  mt-4">
-            <Link to={`/be-volunteer/${_id}`} className="btn btn-primary">
+            <Link to={`/be-volunteer/${_id}`} className="btn  text-white bg-gradient-to-r from-[#228d79] to-[#148161]">
               Be a Volunteer
             </Link>
           </div>

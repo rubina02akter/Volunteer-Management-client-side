@@ -2,13 +2,17 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
+
+
 
 const UpdateMyPost = () => {
   const { _id } = useParams();
   const [posts, setPosts] = useState();
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
@@ -16,7 +20,7 @@ const UpdateMyPost = () => {
       .get(`https://server-side-rho-lemon.vercel.app/update-post/${_id}`)
       .then((res) => {
         console.log(res.data);
-        setPosts(res.data); // ডেটা স্টেটে সেট করুন
+        setPosts(res.data); 
       })
       .catch((error) => {
         console.log(error);
@@ -25,16 +29,47 @@ const UpdateMyPost = () => {
 
   const handleUpdatePost = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
+    // const formData = new FormData(e.target);
+    // const data = Object.fromEntries(formData.entries());
+    const form = e.target;
+    const thumbnail = form.thumbnail.value;
+    const title = form.title.value;
+    const category = form.category.value;
+    const deadline = form.deadline.value;
+    const location = form.location.value;
+    const volunteersNeeded = parseInt(form.volunteers_needed.value);
+    const description = form.description.value;
+    const organizerName = form.organizerName.value;
+    const organizerEmail = form.organizerEmail.value;
+    const newPost = {
+      thumbnail,
+      title,
+      category,
+      deadline,
+      location,
+      volunteersNeeded,
+      description,
+      organizerName,
+      organizerEmail,
+    };
+
+    console.log(newPost);
 
     const fetchData = async () => {
       try {
         const response = await axios.patch(
           `https://server-side-rho-lemon.vercel.app/my-posts/${_id}`,
-          data
+          newPost
         );
         console.log(response);
+        Swal.fire({
+          title: "Success!",
+          text: "Your post has been updated successfully.",
+          icon: "success",
+          confirmButtonText: "Go to My Posts",
+        }).then(() => {
+          navigate("/my-posts");
+        });
       } catch (error) {
         console.error(error);
       }
@@ -84,7 +119,7 @@ const UpdateMyPost = () => {
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
                 name="deadline"
-                dateFormat="d/M/yy" // Format inside the date picker
+                dateFormat="d/M/yy" 
               />
             </div>
 

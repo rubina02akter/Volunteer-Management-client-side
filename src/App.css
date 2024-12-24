@@ -4,7 +4,7 @@
 
 .dropdown-button {
   cursor: pointer;
-  padding: 0.5rem 1rem;
+ 
   border-radius: 0.25rem;
 }
 
@@ -16,7 +16,8 @@
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
-  min-width: 120px;
+  width: 150px;
+  height: 90px;
   z-index: 1000;
 }
 
@@ -44,19 +45,16 @@
 }
 
 /* Light mode styles */
-body {
-  background-color: #fff;
-  color: #333;
-}
+
 
 /* Dark mode styles */
 body.dark {
-  background-color: #121212;
+  background-color: #173728;
   color: #fff;
 }
 
 /* Other global styles like navbar, cards, buttons, etc. */
 
 .btn.dark {
-  background-color: #444;
+  background-color: #dfd8d8;
 }

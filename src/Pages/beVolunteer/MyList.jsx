@@ -93,7 +93,7 @@ const MyList = () => {
   } = loadData;
 
   return (
-    <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+    <div className="max-w-4xl my-12 mx-auto bg-[#DEE5D9] shadow-md rounded-lg p-6">
       <h1 className="text-2xl font-bold text-center mb-6">Be a Volunteer</h1>
       <form onSubmit={handleReq}>
         {/* Post Information */}
@@ -249,7 +249,7 @@ const MyList = () => {
 
         {/* Submit Button */}
         <div className="form-control mt-6">
-          <button type="submit" className="btn btn-primary w-full">
+          <button type="submit" className="btn text-white bg-gradient-to-r from-[#228d79] to-[#148161] w-full">
             Request
           </button>
         </div>

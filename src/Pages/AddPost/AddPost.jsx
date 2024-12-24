@@ -60,8 +60,8 @@ const AddPost = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
-      <section className="p-2 md:p-6 mx-auto bg-white rounded-md shadow-md">
+    <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12 ">
+      <section className="p-2 md:p-6 mx-auto bg-[#DEE5D9] rounded-md shadow-md">
         <h2 className="text-lg font-semibold text-gray-700 capitalize">
           Add Volunteer Need Post
         </h2>
@@ -165,7 +165,7 @@ const AddPost = () => {
               type="text"
               value={user?.displayName || "user"}
               readOnly
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-gray-200 border border-gray-200 rounded-md focus:outline-none"
+              className="block w-full px-4 py-2 mt-2 text-gray-700  border border-gray-200 rounded-md focus:outline-none"
             />
           </div>
 
@@ -179,14 +179,14 @@ const AddPost = () => {
               type="email"
               value={user?.email || ""}
               readOnly
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-gray-200 border border-gray-200 rounded-md focus:outline-none"
+              className="block w-full px-4 py-2 mt-2 text-gray-700  border border-gray-200 rounded-md focus:outline-none"
             />
           </div>
 
           <div className="flex justify-end mt-6">
             <button
               type="submit"
-              className="disabled:cursor-not-allowed px-8 py-2.5 leading-5 text-white transition-colors duration-300 bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+              className="disabled:cursor-not-allowed px-8 py-2.5 leading-5 text-white transition-colors duration-300 bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 btn btn-block"
             >
               Add Post
             </button>

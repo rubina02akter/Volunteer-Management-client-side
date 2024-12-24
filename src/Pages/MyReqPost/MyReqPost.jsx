@@ -70,13 +70,13 @@ const MyReqPost = () => {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 lg:px-8">
+    <div className="px-4 py-6 sm:px-6 lg:px-8 ">
       {emails && emails.length > 0 ? (
         <div>
           {/* Table for Large Devices */}
           <div className="hidden lg:block">
             <table className="min-w-full table-auto bg-white border-collapse shadow-lg rounded-lg overflow-hidden">
-              <thead className="bg-gray-100 text-gray-600">
+              <thead className="bg-[#DEE5D9] text-black">
                 <tr>
                   <th className="py-3 px-4 text-left font-semibold">No</th>
                   <th className="py-3 px-4 text-left font-semibold">Title</th>
