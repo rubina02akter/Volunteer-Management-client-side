@@ -1,16 +1,38 @@
+import { useState, useEffect, useContext } from "react";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { toast } from "react-toastify";
 import userIcon from "../../assets/icons/user.png";
 import logo from '../../assets/icons/volunteer_18563004.png'
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import "../../App.css";
-import { useContext } from "react";
 
-import { FaMoon, FaSun } from "react-icons/fa";
-import { toast } from "react-toastify";
-import { AuthContext } from "../../Provider/AuthProvider";
+import "../../App.css";
+
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Check if dark mode preference is saved in localStorage
+  useEffect(() => {
+    const savedMode = localStorage.getItem("theme");
+    if (savedMode === "dark") {
+      setDarkMode(true);
+      document.body.classList.add("dark");
+    }
+  }, []);
+
+  const handleThemeToggle = () => {
+    setDarkMode(!darkMode);
+    if (!darkMode) {
+      document.body.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
 
   const handleSignOut = () => {
     signOutUser()
@@ -34,7 +56,6 @@ const Navbar = () => {
       </li>
       {user && (
         <>
-          
           <li className="dropdown2">
             <button className="dropdown-button">My Profile</button>
             <ul className="dropdown-menu">
@@ -46,15 +67,16 @@ const Navbar = () => {
               </li>
             </ul>
           </li>
+          <li>
+            <NavLink to="/my-req-post">My Req Post</NavLink>
+          </li>
         </>
       )}
     </>
   );
 
-  // bg-gradient-to-r from-[#112e2a] to-[#186c5b]
-
   return (
-    <div className="navbar pt-6 ">
+    <div className="navbar pt-6">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -79,22 +101,25 @@ const Navbar = () => {
           >
             {links}
           </ul>
-          
         </div>
 
         <img className="md:w-12 md:h-12 h-8 rounded-full w-8" src={logo} alt="logo" />
-       
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 space-x-3">{links}</ul>
       </div>
       <div className="navbar-end">
-        {/* Dark Mode Toggle (Optional) */}
-        {/* <button
+        {/* Dark Mode Toggle */}
+        <button
+          onClick={handleThemeToggle}
           className="bg-none rounded-full mr-2"
         >
-          {darkMode ? <FaSun className="text-yellow-500 w-8 h-6" /> : <FaMoon className="w-8 h-6" />}
-        </button> */}
+          {darkMode ? (
+            <FaSun className="text-yellow-500 w-8 h-6" />
+          ) : (
+            <FaMoon className="w-8 h-6" />
+          )}
+        </button>
         <div>
           {user ? (
             <div className="dropdown dropdown-end z-50">
@@ -110,7 +135,7 @@ const Navbar = () => {
                   <img
                     referrerPolicy="no-referrer"
                     alt="User Profile Photo"
-                    src={user?.photoURL || userIcon} // Added fallback
+                    src={user?.photoURL || userIcon}
                   />
                 </div>
               </div>
@@ -118,10 +143,9 @@ const Navbar = () => {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box md:w-52 w-32 text-xs"
               >
-                <li>{links}</li>
                 <li className="mt-2">
                   <button
-                    onClick={handleSignOut} 
+                    onClick={handleSignOut}
                     className="bg-gray-200 block text-center"
                   >
                     Logout
@@ -131,10 +155,10 @@ const Navbar = () => {
             </div>
           ) : (
             <>
-              <Link className="btn btn-outline mr-2 " to="/login">
+              <Link className="btn btn-outline mr-2" to="/login">
                 Log in
               </Link>
-              <Link className="btn btn-outline  " to="/register">
+              <Link className="btn btn-outline" to="/register">
                 Register
               </Link>
             </>

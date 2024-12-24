@@ -12,6 +12,7 @@ import MyList from "../Pages/BeVolunteer/MyList";
 import PrivateRoute from "./PrivateRoute";
 import UpdateMyPost from "../Pages/MyPosts/UpdateMyPost";
 import Error from "../Components/Error";
+import MyReqPost from "../Pages/MyReqPost/MyReqPost";
 
 
 
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
       {
         path:'/my-posts',
         element:<PrivateRoute><MyPosts /></PrivateRoute>,
+
+      },
+      {
+        path:'/my-req-post',
+        element:<PrivateRoute><MyReqPost></MyReqPost></PrivateRoute>,
 
       },
      

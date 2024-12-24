@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
 
 
 const LogIn = () => {
@@ -38,6 +39,10 @@ const LogIn = () => {
       })
       .catch((error) => {
         console.log("ERROR", error.message);
+         // Use toast.error to display the error message
+      toast.error(`Error: ${error.message}`, {
+        autoClose: 2000,        
+      });
         setError(error.message);
       });
   };
@@ -53,6 +58,11 @@ const LogIn = () => {
       })
       .catch((error) => {
         console.log("ERROR", error.message);
+            // Use toast.error to display the error message
+      toast.error(`Error: ${error.message}`, {
+        autoClose: 2000,        
+      });
+      
       });
   };
 
@@ -101,7 +111,7 @@ const LogIn = () => {
           success && <p className='text-green-500'>user login successfully</p>
         }
         {
-          error && <p className='text-white text-center'>{error}</p>
+          error && <p className='text-red-600 text-center'>{error}</p>
         }
 
 

@@ -28,7 +28,7 @@ const Home = () => {
         ))}
       </div>
       <div className="flex justify-center">
-        <Link to='/all-vol-need-post' className="btn my-12 btn-success text-white">See All Volunteer Needed Posts<FaArrowRight></FaArrowRight></Link>
+        <Link to='/all-vol-need-post' className="btn my-12 btn-accent">See All Volunteer Needed Posts<FaArrowRight></FaArrowRight></Link>
       </div>
     </div>
   );

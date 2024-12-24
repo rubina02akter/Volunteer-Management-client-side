@@ -64,7 +64,7 @@ const Register = () => {
         });
       })
       .catch((error) => {
-        toast("ERROR", error.message);
+        toast.error("ERROR", error.message);
         setErrorMessage(error.message);
         setSuccess(false);
       });
@@ -80,6 +80,10 @@ const Register = () => {
       })
       .catch((error) => {
         console.log("ERROR", error.message);
+            // Use toast.error to display the error message
+      toast.error(`Error: ${error.message}`, {
+        autoClose: 2000,        
+      });
       });
   };
 

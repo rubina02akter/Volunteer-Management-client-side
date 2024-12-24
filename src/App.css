@@ -42,3 +42,21 @@
   display: block;
   width: 100%;
 }
+
+/* Light mode styles */
+body {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Dark mode styles */
+body.dark {
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Other global styles like navbar, cards, buttons, etc. */
+
+.btn.dark {
+  background-color: #444;
+}
