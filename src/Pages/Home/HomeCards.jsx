@@ -48,7 +48,7 @@ const HomeCards = ({ card }) => {
         <div className="w-full bg-gray-200 rounded-full h-2.5">
           <div
             className="bg-[#228d79] h-2.5 rounded-full"
-            style={{ width: `${(volunteersNeeded / 100) * 100}%` }} // Adjust percentage dynamically if needed
+            style={{ width: `${(volunteersNeeded / 10) * 100}%` }} // Adjust percentage dynamically if needed
           ></div>
         </div>
       </div>
@@ -66,7 +66,7 @@ const HomeCards = ({ card }) => {
 
       {/* View Details Button */}
       <Link to={`/upcoming-deadlines/${_id}`}>
-        <button className="btn w-full bg-gradient-to-r from-[#228d79] to-[#186c5b] text-white font-medium py-2 rounded-lg hover:from-[#1b705e] hover:to-[#14584a]">
+        <button className="btn w-full bg-gradient-to-r from-[#228d79] to-[#186c5b] text-white font-medium py-2 rounded-lg hover:from-[#186c5b] hover:to-[#228d79]">
           View Details
         </button>
       </Link>

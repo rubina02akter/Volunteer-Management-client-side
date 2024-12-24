@@ -11,6 +11,7 @@ import MyPosts from "../Pages/MyPosts/MyPosts";
 import MyList from "../Pages/BeVolunteer/MyList";
 import PrivateRoute from "./PrivateRoute";
 import UpdateMyPost from "../Pages/MyPosts/UpdateMyPost";
+import Error from "../Components/Error";
 
 
 
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
   {
     path:'/',
     element: <MainLayOut></MainLayOut>,
-    errorElement:'',
+    errorElement:<Error></Error>,
     children: [
       {
         path:'/',

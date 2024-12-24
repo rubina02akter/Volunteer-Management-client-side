@@ -1,10 +1,9 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-
 const CardsDetail = () => {
   const cardData = useLoaderData();
-  console.log(cardData);
-  const{ _id,
+  const {
+    _id,
     thumbnail,
     title,
     description,
@@ -13,32 +12,34 @@ const CardsDetail = () => {
     volunteersNeeded,
     deadline,
     organizerName,
-    organizerEmail,}= cardData
+    organizerEmail,
+  } = cardData;
+
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl max-w-screen-md mx-auto my-4">
-    <figure className="w-full lg:w-1/3">
-      <img
-        src={thumbnail}
-        alt={title}
-        className="object-cover w-full h-full lg:rounded-l-lg"
-      />
-    </figure>
-    <div className="card-body ">
-      <h2 className="card-title text-lg lg:text-xl font-bold">{title}</h2>
-      <p className="text-sm lg:text-base text-gray-600">{description}</p>
-      <div className="mt-2 text-gray-800">
-        <p>Category: {category}</p>
-        <p>Location: {location}</p>
-        <p>Volunteers Needed: {volunteersNeeded}</p>
-        <p>Deadline: {deadline}</p>
-        <p>Organizer: {organizerName}</p>
-        <p>Email: {organizerEmail}</p>
-      </div>
-      <div className="card-actions justify-end">
-        <Link to='/' className="btn btn-primary">Go back</Link>
+    <div className="hero bg-base-200 ">
+      <div className="hero-content flex-col lg:flex-row-reverse">
+        <img
+          src={thumbnail}
+          alt={title}
+          className="md:max-w-sm w-full rounded-lg shadow-2xl"
+        />
+        <div>
+          <h1 className="text-5xl font-bold">{title}</h1>
+          <p className="py-6 text-lg text-gray-700">{description}</p>
+          <div className="text-gray-800">
+            <p><strong>Category:</strong> {category}</p>
+            <p><strong>Location:</strong> {location}</p>
+            <p><strong>Volunteers Needed:</strong> {volunteersNeeded}</p>
+            <p><strong>Deadline:</strong> {deadline}</p>
+            <p><strong>Organizer:</strong> {organizerName}</p>
+            <p><strong>Email:</strong> {organizerEmail}</p>
+          </div>
+          <div className="card-actions  mt-4">
+            <Link to="/" className="btn btn-primary">Go Back</Link>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 
