@@ -1,45 +1,75 @@
 import { Link } from "react-router-dom";
 
-const HomeCards = ({card}) => {
- const{ _id,
-  thumbnail,
-  title,
-  description,
-  category,
-  location,
-  volunteersNeeded,
-  deadline,
-  organizerName,
-  organizerEmail,} = card;
+const HomeCards = ({ card }) => {
+  const {
+    _id,
+    thumbnail,
+    title,
+    description,
+    category,
+    location,
+    volunteersNeeded,
+    deadline,organizerName
+  } = card;
 
   return (
-    <div className="card card-compact bg-base-100  shadow-xl border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
-      {/* Image */}
-      <figure>
-        <img src={thumbnail} alt={title} className="w-full h-48 object-cover" />
-      </figure>
+    <div className="card  border rounded-lg shadow-lg p-4">
+     <div className="h-36">
+       {/* Category Badge */}
+       <div className="mb-2">
+        <span className="badge text-white bg-gradient-to-r from-[#228d79] to-[#d43fcf] px-3 py-1 rounded-md">
+          {category}
+        </span>
+      </div>
 
-      {/* Card Body */}
-      <div className="card-body">
-        <h2 className="card-title text-xl font-bold">{title}</h2>
-        <p className="text-sm text-gray-500">{description}</p>
+      {/* Title */}
+      <h2 className="text-xl font-bold mb-2">{title}</h2>
 
-        {/* Details */}
-        <div className="mt-4 text-sm space-y-2 font-semibold">
-          <p>Category: {category}</p>
-          <p>Location: {location}</p>
-          <p>Volunteers Needed: {volunteersNeeded}</p>
-          <p>Deadline: {deadline}</p>
-          <p>Organizer: {organizerName}</p>
+      {/* Description */}
+      <p className="text-gray-600 text-sm mb-4">{description}</p>
+     </div>
+
+      {/* Thumbnail */}
+      <div className="mb-4">
+        <img
+          src={thumbnail}
+          className="w-full h-[180px] object-cover rounded-lg"
+          alt={title}
+        />
+      </div>
+
+      {/* Progress Bar */}
+      <div className="mb-4">
+        <div className="flex justify-between text-sm mb-1">
+          <span className="font-semibold text-gray-600">
+            Volunteers Needed: {volunteersNeeded}
+          </span>
         </div>
-
-        {/* Actions */}
-        <div className="card-actions mt-4 justify-end">
-          <Link to={`/upcoming-deadlines/${_id}`}>
-            <button className="btn btn-primary">View Details</button>
-          </Link>
+        <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <div
+            className="bg-[#228d79] h-2.5 rounded-full"
+            style={{ width: `${(volunteersNeeded / 100) * 100}%` }} // Adjust percentage dynamically if needed
+          ></div>
         </div>
       </div>
+
+      {/* Goal Information */}
+      <div className="text-sm font-medium text-gray-600 mb-4">
+        Deadline: <span className="text-black">{deadline}</span>
+      </div>
+
+      {/* Location and Organizer */}
+      <div className="flex justify-between text-sm font-medium text-gray-600 mb-4">
+        <span>Location: {location}</span>
+        <span>Organizer: {organizerName}</span>
+      </div>
+
+      {/* View Details Button */}
+      <Link to={`/upcoming-deadlines/${_id}`}>
+        <button className="btn w-full bg-gradient-to-r from-[#228d79] to-[#186c5b] text-white font-medium py-2 rounded-lg hover:from-[#1b705e] hover:to-[#14584a]">
+          View Details
+        </button>
+      </Link>
     </div>
   );
 };

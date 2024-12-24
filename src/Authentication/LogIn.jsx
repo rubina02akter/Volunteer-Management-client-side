@@ -59,66 +59,61 @@ const LogIn = () => {
   return (
     <>
      
-      <div className="card w-11/12 max-w-lg shrink-0 mx-auto   rounded-none">
-        <h2 className="font-semibold text-2xl mt-12 ml-8 text-green-700">
-          Log in here
-        </h2>
+    <div className="card w-11/12 max-w-lg shrink-0 mx-auto   rounded-none">
+        <h2 className="font-semibold text-2xl mt-12 ml-8 ">Log in here</h2>
         <form onSubmit={handleLogIn} className="card-body ">
           <div className="form-control ">
             <label className="label">
-              <span className="label-text text-white">Email</span>
+              <span className="label-text">Email</span>
             </label>
             <input
               type="email"
+              
               name="email"
               placeholder="email"
-              className="input border-b-black rounded-lg"
+              className="input border-black rounded-lg"
               required
             />
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">Password</span>
+              <span className="label-text ">Password</span>
             </label>
             <input
               type="password"
               name="password"
               placeholder="password"
-              className="input  border-b-black rounded-lg"
+              className="input  border-black rounded-lg"
               required
             />
             <label className="label">
-              <NavLink className="label-text-alt link link-hover text-white">
+              <NavLink  className="label-text-alt link link-hover ">
                 Forgot password?
               </NavLink>
             </label>
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-gradient-to-r from-green-700 to-green-900 text-white text-lg">
-              Login
-            </button>
+            <button className="btn btn-outline">Login</button>
+          
           </div>
         </form>
-        {success && <p className="text-green-500">user login successfully</p>}
-        {error && <p className="text-white text-center">{error}</p>}
+        {
+          success && <p className='text-green-500'>user login successfully</p>
+        }
+        {
+          error && <p className='text-white text-center'>{error}</p>
+        }
+
 
         <p className="text-center font-semibold text-lg mb-6 ">
-          New to this website? Please{" "}
-          <Link to="/register" className="underline text-green-700">
-            Register
-          </Link>
+          New to this website? Please <Link to='/register' className="underline ">Register</Link>
         </p>
         <div className="flex justify-center items-center mb-4 ">
-          <button
-            onClick={handleGoogleSignIn}
-            className="btn btn-outline rounded-none "
-          >
-            Google
-            <FcGoogle />
-          </button>
+          <button onClick={handleGoogleSignIn} className="btn btn-outline rounded-none ">Google<FcGoogle /></button>
+      
         </div>
       </div>
-    </>
+      </>
   );
 };
 

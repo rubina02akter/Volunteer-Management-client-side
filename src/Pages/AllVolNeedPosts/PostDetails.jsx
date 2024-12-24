@@ -25,13 +25,9 @@ const PostDetails = () => {
     organizerEmail,
   } = data;
 
-  
-
-
- 
 
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl max-w-screen-md mx-auto my-4">
+    <div className="card lg:card-side bg-base-100 shadow-xl max-w-screen-md mx-4 lg:mx-auto my-4">
       <figure className="w-full lg:w-1/3">
         <img
           src={thumbnail}

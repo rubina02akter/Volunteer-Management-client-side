@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const MyList = () => {
@@ -32,21 +33,43 @@ const MyList = () => {
     const suggestion = e.target.suggestion.value;
     const status = "requested";
 
-    fetch('https://server-side-rho-lemon.vercel.app/be-volunteer',{
+    fetch('https://server-side-rho-lemon.vercel.app/be-volunteer', {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        ...loadData,suggestion,status
+        ...loadData,
+        suggestion,
+        status,
+        _id, // Include the ID of the specific post
       }),
     })
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data)
-    })
-
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          Swal.fire({
+            title: "Request Sent!",
+            text: "Your request has been successfully submitted.",
+            icon: "success",
+          });
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: "Could not process your request.",
+            icon: "error",
+          });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          title: "Error",
+          text: "An error occurred. Please try again later.",
+          icon: "error",
+        });
+      });
+    }
 
 
   useEffect(() => {

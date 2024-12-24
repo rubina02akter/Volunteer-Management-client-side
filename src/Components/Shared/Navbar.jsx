@@ -1,4 +1,5 @@
 import userIcon from "../../assets/icons/user.png";
+import logo from '../../assets/icons/volunteer_18563004.png'
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../../App.css";
 import { useContext } from "react";
@@ -50,8 +51,10 @@ const Navbar = () => {
     </>
   );
 
+  // bg-gradient-to-r from-[#112e2a] to-[#186c5b]
+
   return (
-    <div className="navbar pt-6">
+    <div className="navbar pt-6 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -76,7 +79,11 @@ const Navbar = () => {
           >
             {links}
           </ul>
+          
         </div>
+
+        <img className="md:w-12 md:h-12 h-8 rounded-full w-8" src={logo} alt="logo" />
+       
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 space-x-3">{links}</ul>
@@ -114,7 +121,7 @@ const Navbar = () => {
                 <li>{links}</li>
                 <li className="mt-2">
                   <button
-                    onClick={handleSignOut} // Use handleSignOut here
+                    onClick={handleSignOut} 
                     className="bg-gray-200 block text-center"
                   >
                     Logout
@@ -124,10 +131,10 @@ const Navbar = () => {
             </div>
           ) : (
             <>
-              <Link className="btn btn-outline ml-3 " to="/login">
+              <Link className="btn btn-outline mr-2 " to="/login">
                 Log in
               </Link>
-              <Link className="btn btn-outline ml-3 " to="/register">
+              <Link className="btn btn-outline  " to="/register">
                 Register
               </Link>
             </>

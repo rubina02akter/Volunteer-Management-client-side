@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Slider from "./Slider";
 import HomeCards from "./HomeCards";
 import { Link } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
 
 const Home = () => {
   const [cards, setCards] = useState([]);
@@ -18,14 +19,16 @@ const Home = () => {
 
   return (
     <div>
-     <Slider></Slider>
+   <div className="my-12">
+   <Slider></Slider>
+   </div>
      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-12 w-11/12 mx-auto">
         {cards.map((card) => (
           <HomeCards key={card._id} card={card}></HomeCards>
         ))}
       </div>
       <div className="flex justify-center">
-        <Link to='/all-vol-need-post' className="btn btn-success ">See All </Link>
+        <Link to='/all-vol-need-post' className="btn my-12 btn-success text-white">See All Volunteer Needed Posts<FaArrowRight></FaArrowRight></Link>
       </div>
     </div>
   );

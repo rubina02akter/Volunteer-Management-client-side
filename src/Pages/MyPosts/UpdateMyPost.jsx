@@ -1,31 +1,27 @@
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { AuthContext } from '../../Provider/AuthProvider';
-import { useContext,  useEffect,  useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const UpdateMyPost = () => {
-
   const { _id } = useParams();
   const [posts, setPosts] = useState();
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
 
-
-useEffect(() => {
-  axios.get(`https://server-side-rho-lemon.vercel.app/update-post/${_id}`)
-    .then(res => {
-      console.log(res.data);
-      setPosts(res.data); // ডেটা স্টেটে সেট করুন
-    })
-    .catch(error => {
-      console.log(error);
-    });
-}, [_id]);
- 
-  
+  useEffect(() => {
+    axios
+      .get(`https://server-side-rho-lemon.vercel.app/update-post/${_id}`)
+      .then((res) => {
+        console.log(res.data);
+        setPosts(res.data); // ডেটা স্টেটে সেট করুন
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [_id]);
 
   const handleUpdatePost = (e) => {
     e.preventDefault();
@@ -34,7 +30,10 @@ useEffect(() => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.patch(`https://server-side-rho-lemon.vercel.app/my-posts/${_id}`, data);
+        const response = await axios.patch(
+          `https://server-side-rho-lemon.vercel.app/my-posts/${_id}`,
+          data
+        );
         console.log(response);
       } catch (error) {
         console.error(error);
@@ -42,7 +41,6 @@ useEffect(() => {
     };
     fetchData();
   };
-
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
@@ -86,6 +84,7 @@ useEffect(() => {
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
                 name="deadline"
+                dateFormat="d/M/yy" // Format inside the date picker
               />
             </div>
 
@@ -153,7 +152,7 @@ useEffect(() => {
               id="organizerName"
               name="organizerName"
               type="text"
-              value={user?.displayName || ''}
+              value={user?.displayName || ""}
               readOnly
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-gray-200 border border-gray-200 rounded-md focus:outline-none"
             />
@@ -167,7 +166,7 @@ useEffect(() => {
               id="organizer_email"
               name="organizerEmail"
               type="email"
-              value={user?.email || ''}
+              value={user?.email || ""}
               readOnly
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-gray-200 border border-gray-200 rounded-md focus:outline-none"
             />
