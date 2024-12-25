@@ -2,6 +2,8 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
+
 
 
 const MyPosts = () => {
@@ -9,17 +11,31 @@ const MyPosts = () => {
   const { user,emails, setEmails } = useContext(AuthContext);
   console.log(user);
 
+
+  // useEffect(() => {
+  //   if (user.email) {
+  //     const data = async () => {
+  //       const url = `https://server-side-rho-lemon.vercel.app/my-posts?email=${user.email}`;
+  //       const res = await fetch(url);
+  //       const value = await res.json();
+  //       setEmails(value);
+  //     };
+  //     data();
+  //   }
+  // }, [user?.email]);
   useEffect(() => {
-    if (user.email) {
-      const data = async () => {
-        const url = `https://server-side-rho-lemon.vercel.app/my-posts?email=${user.email}`;
-        const res = await fetch(url);
-        const value = await res.json();
-        setEmails(value);
-      };
-      data();
-    }
+    axios.get(`https://server-side-rho-lemon.vercel.app/my-posts?email=${user.email}`,{
+      withCredentials: true
+    })
+    .then(res=>setEmails(res.data))
+
+    // secureAxios.get(`my-posts?email=${user.email}`)
+    // .then(res=>setEmails(res.data))
+    
+
   }, [user?.email]);
+
+ 
 
   //appply delete method 
 

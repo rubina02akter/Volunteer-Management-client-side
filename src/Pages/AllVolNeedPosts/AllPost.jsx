@@ -1,14 +1,22 @@
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import AllPostCard from "./AllPostCard";
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { MdTableRows } from "react-icons/md";
 
+
 const AllPost = () => {
   const [posts, setPosts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [layout, setLayout] = useState("grid");
+  const [expandedPostId, setExpandedPostId] = useState(null);
+ 
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
+  };
+
+  const toggleExpand = (postId) => {
+    setExpandedPostId(expandedPostId === postId ? null : postId); // Toggle expanded view
   };
 
   useEffect(() => {
@@ -37,9 +45,9 @@ const AllPost = () => {
 
   return (
     <div className="w-11/12 mx-auto">
-      {/* search and layout */}
+      {/* Search and layout controls */}
       <div className="my-6 flex flex-col md:flex-row justify-between gap-1">
-        <div className="md:w-8/12 w-full ">
+        <div className="md:w-8/12 w-full">
           <label className="input input-bordered flex items-center gap-2">
             <input
               type="text"
@@ -63,16 +71,82 @@ const AllPost = () => {
           </label>
         </div>
         <div className="flex md:justify-between justify-end items-center gap-4 px-8 rounded-lg">
-          <BsGrid3X3GapFill className="text-3xl" />
-          <MdTableRows className="text-3xl" />
+          <BsGrid3X3GapFill
+            className={`text-3xl cursor-pointer ${
+              layout === "grid" ? "text-blue-500" : ""
+            }`}
+            onClick={() => setLayout("grid")}
+          />
+          <MdTableRows
+            className={`text-3xl cursor-pointer ${
+              layout === "table" ? "text-blue-500" : ""
+            }`}
+            onClick={() => setLayout("table")}
+          />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-        {posts.map((post) => (
-          <AllPostCard key={post._id} post={post}></AllPostCard>
-        ))}
-      </div>
+      {/* Conditional rendering based on layout */}
+      {layout === "grid" ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+          {posts.map((post) => (
+            <AllPostCard key={post._id} post={post}></AllPostCard>
+          ))}
+        </div>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full border-collapse border border-gray-200">
+            <thead>
+              <tr className='bg-gray-200'>
+                <th>Thumbnail</th>
+                <th className="border border-gray-200 p-2">Title</th>
+                <th className="border border-gray-200 p-2">Description</th>
+                <th className="border border-gray-200 p-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {posts.map((post) => (
+                <>
+                  <tr key={post._id} className=' text-white hover:bg-gray-100'>
+                    <td className="border border-gray-200 p-2">
+                      <div className="avatar">
+                        <div className="mask mask-squircle h-12 w-12">
+                          <img
+                            src={post.thumbnail}
+                            alt="Avatar Tailwind CSS Component"
+                          />
+                        </div>
+                      </div>
+                    </td>
+                    <td className="border text-black border-gray-200 p-2">{post.title}</td>
+                    <td className="border text-black border-gray-200 p-2">
+                      {post.description.slice(0, 50)}...
+                    </td>
+                    <td className="border border-gray-200 p-2">
+                      <button
+                        className='btn  btn-sm'
+                        onClick={() => toggleExpand(post._id)}
+                      >
+                        {expandedPostId === post._id ? "Hide" : "View"}
+                      </button>
+                    </td>
+                  </tr>
+                  {expandedPostId === post._id && (
+                    <tr>
+                      <td colSpan="3" className="p-4">
+                        {/* Render grid card in the table row */}
+                        <div className="bg-gray-100 p-4 rounded-lg shadow">
+                          <AllPostCard post={post} />
+                        </div>
+                      </td>
+                    </tr>
+                  )}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

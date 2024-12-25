@@ -18,13 +18,18 @@ const Footer = () => {
         style={{ backgroundImage: `url(${bg})` }}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div>
+          <h2 className="text-center mb-7 text-3xl font-extrabold ">
+          Everyone can help! 
+          </h2>
+        </div>
 
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start w-10/12 mx-auto gap-8 relative">
           {/* Footer Image */}
           <div className="flex justify-center">
             <img
               src={footer}
-              alt="Game Night"
+              alt=""
               className="lg:w-[300px] w-[150px]"
             />
           </div>

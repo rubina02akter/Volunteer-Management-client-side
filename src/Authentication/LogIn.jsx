@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
@@ -68,8 +67,8 @@ const LogIn = () => {
 
   return (
     <>
-     
-    <div className="card w-11/12 max-w-lg shrink-0 mx-auto   rounded-none">
+
+   <div className="card w-11/12 max-w-lg shrink-0 mx-auto   rounded-none">
         <h2 className="font-semibold text-2xl mt-12 ml-8 ">Log in here</h2>
         <form onSubmit={handleLogIn} className="card-body ">
           <div className="form-control ">
@@ -120,9 +119,10 @@ const LogIn = () => {
         </p>
         <div className="flex justify-center items-center mb-4 ">
           <button onClick={handleGoogleSignIn} className="btn btn-outline rounded-none ">Google<FcGoogle /></button>
-      
         </div>
       </div>
+    
+   
       </>
   );
 };

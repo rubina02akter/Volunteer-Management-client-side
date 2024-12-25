@@ -13,27 +13,8 @@ import "../../App.css";
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  // const [darkMode, setDarkMode] = useState(false);
+ 
 
-  // Check if dark mode preference is saved in localStorage
-  // useEffect(() => {
-  //   const savedMode = localStorage.getItem("theme");
-  //   if (savedMode === "dark") {
-  //     setDarkMode(true);
-  //     document.body.classList.add("dark");
-  //   }
-  // }, []);
-
-  // const handleThemeToggle = () => {
-  //   setDarkMode(!darkMode);
-  //   if (!darkMode) {
-  //     document.body.classList.add("dark");
-  //     localStorage.setItem("theme", "dark");
-  //   } else {
-  //     document.body.classList.remove("dark");
-  //     localStorage.setItem("theme", "light");
-  //   }
-  // };
 
   const handleSignOut = () => {
     signOutUser()
@@ -58,8 +39,8 @@ const Navbar = () => {
       {user && (
         <>
           <li className="dropdown2">
-            <button className="dropdown-button">My Profile<IoIosArrowDropdown /></button>
-            <ul className="dropdown-menu px-3 py-2 text-xs">
+            <button className="dropdown-button ">My Profile<IoIosArrowDropdown /></button>
+            <ul className='dropdown-menu px-3 py-2 text-xs'>
               <li>
                 <Link to="/add-volunteer-need-post">Add Post</Link>
               </li>
@@ -112,7 +93,7 @@ const Navbar = () => {
       <div className="navbar-end">
         {/* Dark Mode Toggle */}
         {/* <button
-          onClick={handleThemeToggle}
+          
           className="bg-none rounded-full mr-2"
         >
           {darkMode ? (
