@@ -13,6 +13,7 @@ const AuthProvider = ({children}) => {
   const[loading,setLoading] = useState(true);
   const [emails, setEmails] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
+  const [theme, setTheme] = useState("light");
 
 const createUser = (email, password) => {
   setLoading(true);
@@ -37,6 +38,21 @@ const signOutUser = ( ) => {
   const updateUserProfile = (updatedData) => {
     return updateProfile(auth.currentUser , updatedData)
   }
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+
+  const handleTheme = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+      // console.log(e.target.value)
+    } else {
+      setTheme("light");
+    }
+  };
 
   // useEffect(()=>{
   //   const unSubscribe = onAuthStateChanged(auth,currentUser=>{
@@ -94,7 +110,7 @@ const authInfo = {
   signInWithGoogle,
   emails,
  setEmails,
- updateUserProfile,darkMode, setDarkMode
+ updateUserProfile,theme, setTheme,handleTheme
 }
 
   return (

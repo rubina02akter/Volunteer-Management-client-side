@@ -1,7 +1,8 @@
-import {  useEffect, useState } from "react";
+import {  useContext, useEffect, useState } from "react";
 import AllPostCard from "./AllPostCard";
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { MdTableRows } from "react-icons/md";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const AllPost = () => {
@@ -9,6 +10,7 @@ const AllPost = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [layout, setLayout] = useState("grid");
   const [expandedPostId, setExpandedPostId] = useState(null);
+  const {theme} = useContext(AuthContext);
  
 
   const handleSearch = (event) => {
@@ -95,9 +97,9 @@ const AllPost = () => {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="table-auto w-full border-collapse border border-gray-200">
+          <table className="table-auto w-full border-collapse border border-gray-200 my-6">
             <thead>
-              <tr className='bg-gray-200'>
+              <tr className={`${theme === 'dark'? 'text-white' : ''}`}>
                 <th>Thumbnail</th>
                 <th className="border border-gray-200 p-2">Title</th>
                 <th className="border border-gray-200 p-2">Description</th>
@@ -107,7 +109,7 @@ const AllPost = () => {
             <tbody>
               {posts.map((post) => (
                 <>
-                  <tr key={post._id} className=' text-white hover:bg-gray-100'>
+                <tr key={post._id} className={`text-white hover:bg-gray-100 ${theme === 'dark' ? 'hover:bg-transparent hover:bg-opacity-10  hover:backdrop-blur-sm  ' : ''}`}>
                     <td className="border border-gray-200 p-2">
                       <div className="avatar">
                         <div className="mask mask-squircle h-12 w-12">
@@ -118,8 +120,8 @@ const AllPost = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="border text-black border-gray-200 p-2">{post.title}</td>
-                    <td className="border text-black border-gray-200 p-2">
+                    <td className={`border text-black border-gray-200 p-2 ${theme === 'dark' ? 'text-white' : ''}`}>{post.title}</td>
+                    <td className={`border text-black border-gray-200 p-2 ${theme === 'dark' ? 'text-white' : ''}`}>
                       {post.description.slice(0, 50)}...
                     </td>
                     <td className="border border-gray-200 p-2">

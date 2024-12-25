@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaServicestack, FaHandsHelping, FaUsers } from "react-icons/fa";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const SectionTwo = () => {
+  const{theme} = useContext(AuthContext)
   return (
     <div className="w-11/12 mx-auto py-12">
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-extrabold text-[#11362E] mb-4">
+        <h2 className={`text-3xl font-extrabold text-[#11362E] mb-4 ${ theme === 'dark'? 'text-white' : '' }`}>
           The all-in-one volunteer platform with the tools you’ve been wishing for
         </h2>
-        <p className="text-lg text-gray-700">
+        <p className={`text-lg  text-gray-700 mb-4 ${ theme === 'dark'? 'text-gray-300' : '' }`}>
           Connect, manage, and contribute to the community through volunteer opportunities that matter.
         </p>
       </div>
@@ -21,8 +23,8 @@ const SectionTwo = () => {
               <FaServicestack />
             </p>
           </div>
-          <p className="mt-4 text-xl font-bold text-[#11362E]">Create Posts</p>
-          <p className="text-sm text-gray-600 mt-2">
+          <p className={`mt-4 text-xl font-bold text-[#11362E] ${theme === 'dark'? 'text-white' : ''}`}>Create Posts</p>
+          <p className={`text-sm text-gray-600 mt-2 ${theme === 'dark'? 'text-white' : '' }`}>
             Easily create posts for your volunteer needs and share them with the community.
           </p>
         </div>
@@ -34,8 +36,8 @@ const SectionTwo = () => {
               <FaHandsHelping />
             </p>
           </div>
-          <p className="mt-4 text-xl font-bold text-[#11362E]">Volunteer</p>
-          <p className="text-sm text-gray-600 mt-2">
+          <p className={`mt-4 text-xl font-bold text-[#11362E] ${theme === 'dark'? 'text-white' : ''}`}>Volunteer</p>
+          <p className={`text-sm text-gray-600 mt-2 ${theme === 'dark'? 'text-white' : '' }`}>
             Browse through volunteer opportunities and contribute to causes that matter to you.
           </p>
         </div>
@@ -47,8 +49,8 @@ const SectionTwo = () => {
               <FaUsers />
             </p>
           </div>
-          <p className="mt-4 text-xl font-bold text-[#11362E]">Connect</p>
-          <p className="text-sm text-gray-600 mt-2">
+          <p className={`mt-4 text-xl font-bold text-[#11362E] ${theme === 'dark'? 'text-white' : ''}`}>Connect</p>
+          <p className={`text-sm text-gray-600 mt-2 ${theme === 'dark'? 'text-white' : '' }`}>
             Connect with like-minded individuals and make a bigger impact together.
           </p>
         </div>

@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Slider from "./Slider";
 import HomeCards from "./HomeCards";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
-import Section from "./Section";
 import ImgSection from "./ImgSection";
 import SectionTwo from "./SectionTwo";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Home = () => {
   const [cards, setCards] = useState([]);
+  const {theme} = useContext(AuthContext)
 
   useEffect(() => {
     fetch("https://server-side-rho-lemon.vercel.app/upcoming-deadlines")
@@ -25,7 +26,7 @@ const Home = () => {
         <Slider></Slider>
       </div>
       <div>{/* <Section></Section> */}</div>
-      <div>
+      <div className={`${theme === 'dark'?'text-white' : 'text-black'}`}>
         <h2 className="text-center font-extrabold text-4xl my-6">
           We have the power to change tomorrow
         </h2>
