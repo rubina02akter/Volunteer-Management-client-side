@@ -53,7 +53,7 @@ const MyList = () => {
         } else {
           Swal.fire({
             title: "Error",
-            text: "Could not process your request once more.",
+            text: "Could not process your request .",
             icon: "error",
           });
         }
