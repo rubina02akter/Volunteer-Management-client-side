@@ -116,7 +116,7 @@ const MyReqPost = () => {
                           onClick={() => handleDelete(_id)}
                           className="btn bg-gradient-to-r from-red-600 to-red-800 text-white btn-sm"
                         >
-                          Delete
+                         Cancel
                         </button>
                       </td>
                     </tr>
