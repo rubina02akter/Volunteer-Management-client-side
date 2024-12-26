@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const CardsDetail = () => {
   const cardData = useLoaderData();
+  const{theme} = useContext(AuthContext);
+  
   const {
     _id,
     thumbnail,
@@ -16,7 +20,7 @@ const CardsDetail = () => {
   } = cardData;
 
   return (
-    <div className="hero bg-[#DEE5D9] pb-16">
+    <div className={`hero bg-[#DEE5D9] pb-16 ${theme === 'dark'? 'bg-gray-800 text-white': ''}`}>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <img
           src={thumbnail}
@@ -25,8 +29,8 @@ const CardsDetail = () => {
         />
         <div>
           <h1 className="text-5xl font-bold">{title}</h1>
-          <p className="py-6 text-lg text-gray-700">{description}</p>
-          <div className="text-gray-800">
+        <p className={`py-6 text-lg text-gray-700 ${theme === 'dark' ? 'text-white': ''}`}>{description}</p>
+          <div className={`text-gray-800 ${theme === 'dark' ? 'text-white': ''}`}>
             <p><strong>Category:</strong> {category}</p>
             <p><strong>Location:</strong> {location}</p>
             <p><strong>Volunteers Needed:</strong> {volunteersNeeded}</p>

@@ -3,6 +3,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 
 
@@ -79,6 +80,16 @@ const MyPosts = () => {
 
   console.log(emails);
   return (
+ <>
+    <Helmet>
+    <title>Volunteer-Hub|My Profile</title>
+    <meta name="description" content="Helmet application"></meta>
+  </Helmet>
+
+  <div className="text-center my-3 font-extrabold text-2xl underline">
+    <h2>My volunteer need post</h2>
+  </div>
+
     <div className="px-4 py-6 sm:px-6 lg:px-8">
     {emails && emails.length > 0 ? (
       <div>
@@ -176,6 +187,14 @@ const MyPosts = () => {
       </div>
     )}
   </div>
+
+  {/* <div className="text-center my-3 font-extrabold text-2xl underline">
+    <h2>My Volunteer Request Post</h2>
+  </div> */}
+
+
+
+  </>
 );
 };
 

@@ -6,6 +6,7 @@ import { FaArrowRight } from "react-icons/fa";
 import ImgSection from "./ImgSection";
 import SectionTwo from "./SectionTwo";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [cards, setCards] = useState([]);
@@ -22,6 +23,10 @@ const Home = () => {
 
   return (
     <div>
+       <Helmet>
+    <title>Volunteer-Hub|Home</title>
+    <meta name="description" content="Helmet application"></meta>
+  </Helmet>
       <div className="my-12">
         <Slider></Slider>
       </div>

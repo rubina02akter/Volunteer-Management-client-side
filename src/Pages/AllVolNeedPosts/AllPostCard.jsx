@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const AllPostCard = ({ post }) => {
+  const {theme} = useContext(AuthContext);
+
   const {
     _id,
     thumbnail,
@@ -15,7 +19,7 @@ const AllPostCard = ({ post }) => {
   } = post;
 
   return (
-    <div className="card card-compact bg-[#DEE5D9]   border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
+    <div className={`card card-compact bg-[#DEE5D9]   border border-gray-200 hover:shadow-2xl transition-shadow duration-300 ${theme === 'dark' ? 'text-white bg-gray-800': ''}`}>
       {/* Image */}
       <figure>
         <img src={thumbnail} alt={title} className="w-full h-48 object-cover" />

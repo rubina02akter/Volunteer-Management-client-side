@@ -8,6 +8,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import Lottie from "lottie-react";
+import { Helmet } from "react-helmet";
 
 
 const Register = () => {
@@ -90,6 +91,14 @@ const Register = () => {
   
 
   return (
+
+    <>
+
+    <Helmet>
+    <title>Volunteer-Hub|Register</title>
+    <meta name="description" content="Helmet application"></meta>
+  </Helmet>
+
     <div className="flex flex-col lg:flex-row justify-between  w-10/12 mx-auto">
     <div className="lg:w-96 md:w-56 w-44 lg:mt-32 mt-6 md:ml-44 lg:ml-0 ml-24">
       <Lottie animationData={lottieSignUp}></Lottie>
@@ -176,6 +185,7 @@ const Register = () => {
       </div>
     </div>
   </div>
+  </>
   );
 };
 

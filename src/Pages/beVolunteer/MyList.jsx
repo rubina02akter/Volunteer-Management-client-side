@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MyList = () => {
-  const { user } = useContext(AuthContext);
+  const { user,theme } = useContext(AuthContext);
   const [addLists, setAddLists] = useState([]);
   const { displayName, email } = user;
   const [loadData, setLoadData] = useState();
@@ -77,7 +77,7 @@ const MyList = () => {
   }, [user?.email]);
 
   if (!loadData) {
-    return <h2>Loading....</h2>;
+    return <span className="loading loading-dots loading-md"></span>;
   }
 
   const {
@@ -93,7 +93,7 @@ const MyList = () => {
   } = loadData;
 
   return (
-    <div className="max-w-4xl my-12 mx-auto bg-[#DEE5D9] shadow-md rounded-lg p-6">
+    <div className={`max-w-4xl my-12 mx-auto bg-[#DEE5D9] shadow-md rounded-lg p-6 ${theme === 'dark' ? 'text-white bg-gray-800': ''}`}>
       <h1 className="text-2xl font-bold text-center mb-6">Be a Volunteer</h1>
       <form onSubmit={handleReq}>
         {/* Post Information */}

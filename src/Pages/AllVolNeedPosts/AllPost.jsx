@@ -3,6 +3,7 @@ import AllPostCard from "./AllPostCard";
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { MdTableRows } from "react-icons/md";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 
 const AllPost = () => {
@@ -46,6 +47,12 @@ const AllPost = () => {
   }, [searchQuery]);
 
   return (
+ <>
+    <Helmet>
+    <title>Volunteer-Hub|All Post</title>
+    <meta name="description" content="Helmet application"></meta>
+  </Helmet>
+
     <div className="w-11/12 mx-auto">
       {/* Search and layout controls */}
       <div className="my-6 flex flex-col md:flex-row justify-between gap-1">
@@ -150,6 +157,7 @@ const AllPost = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

@@ -3,9 +3,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AddPost = () => {
-  const { user } = useContext(AuthContext);
+  const { user,theme } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
 
   const handlePost = (e) => {
@@ -60,40 +61,46 @@ const AddPost = () => {
   };
 
   return (
+    <>
+    <Helmet>
+    <title>Volunteer-Hub|AddPost</title>
+    <meta name="description" content="Helmet application"></meta>
+  </Helmet>
+
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12 ">
-      <section className="p-2 md:p-6 mx-auto bg-[#DEE5D9] rounded-md shadow-md">
-        <h2 className="text-lg font-semibold text-gray-700 capitalize">
+      <section className={`p-2 md:p-6 mx-auto bg-[#DEE5D9] rounded-md shadow-md ${theme === 'dark' ? 'text-white bg-gray-800': ''}`}>
+        <h2 className={`text-lg font-semibold text-gray-700 capitalize ${theme === 'dark' ? 'text-white': ''}`}>
           Add Volunteer Need Post
         </h2>
 
         <form onSubmit={handlePost}>
           <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
-              <label className="text-gray-700" htmlFor="thumbnail">
+              <label className={`${theme === 'dark' ? 'text-white ': 'text-gray-800'}`} htmlFor="thumbnail">
                 Thumbnail URL
               </label>
               <input
                 id="thumbnail"
                 name="thumbnail"
                 type="url"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+                className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring ${theme === 'dark'? 'bg-gray-800 text-white': ''}`}
               />
             </div>
 
             <div>
-              <label className="text-gray-700" htmlFor="post_title">
+              <label className={`${theme === 'dark' ? 'text-white bg-gray-800': 'text-gray-800'}`} htmlFor="post_title">
                 Post Title
               </label>
               <input
                 id="post_title"
                 name="title"
                 type="text"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+                className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring ${theme === 'dark'? 'bg-gray-800 text-white': ''}`}
               />
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-gray-700">Deadline</label>
+              <label className={`${theme === 'dark' ? 'text-white bg-gray-800': 'text-gray-800'}`}>Deadline</label>
               <DatePicker
                 className="border p-2 rounded-md"
                 selected={startDate}
@@ -104,7 +111,7 @@ const AddPost = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-gray-700" htmlFor="category">
+              <label className={`${theme === 'dark' ? 'text-white bg-gray-800': 'text-gray-800'}`} htmlFor="category">
                 Category
               </label>
               <select
@@ -120,43 +127,43 @@ const AddPost = () => {
             </div>
 
             <div>
-              <label className="text-gray-700" htmlFor="location">
+              <label className={`${theme === 'dark' ? 'text-white bg-gray-800': 'text-gray-800'}`} htmlFor="location">
                 Location
               </label>
               <input
                 id="location"
                 name="location"
                 type="text"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+                className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring ${theme === 'dark'? 'bg-gray-800 text-white': ''}`}
               />
             </div>
 
             <div>
-              <label className="text-gray-700" htmlFor="volunteers_needed">
+              <label className={`${theme === 'dark' ? 'text-white bg-gray-800': 'text-gray-800'}`} htmlFor="volunteers_needed">
                 No. of Volunteers Needed
               </label>
               <input
                 id="volunteers_needed"
                 name="volunteers_needed"
                 type="number"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+                className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring ${theme === 'dark'? 'bg-gray-800 text-white': ''}`}
               />
             </div>
           </div>
 
           <div className="flex flex-col gap-2 mt-4">
-            <label className="text-gray-700" htmlFor="description">
+            <label className={`${theme === 'dark' ? 'text-white bg-gray-800': 'text-gray-800'}`} htmlFor="description">
               Description
             </label>
             <textarea
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+              className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring ${theme === 'dark'? 'bg-gray-800 text-white': ''}`}
               name="description"
               id="description"
             ></textarea>
           </div>
 
           <div className="flex flex-col gap-2 mt-4">
-            <label className="text-gray-700" htmlFor="organizerName">
+            <label className={`${theme === 'dark' ? 'text-white bg-gray-800': 'text-gray-800'}`} htmlFor="organizerName">
               Organizer Name
             </label>
             <input
@@ -170,7 +177,7 @@ const AddPost = () => {
           </div>
 
           <div className="flex flex-col gap-2 mt-4">
-            <label className="text-gray-700" htmlFor="organizer_email">
+            <label className={`${theme === 'dark' ? 'text-white bg-gray-800': 'text-gray-800'}`} htmlFor="organizer_email">
               Organizer Email
             </label>
             <input
@@ -194,6 +201,7 @@ const AddPost = () => {
         </form>
       </section>
     </div>
+    </>
   );
 };
 
