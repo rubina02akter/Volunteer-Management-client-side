@@ -1,37 +1,39 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import UseAxiosSecure from "../../Provider/UseAxiosSecure";
 
 
 const MyReqPost = () => {
   const { user } = useContext(AuthContext);
   const [reqData, setReqData] = useState([]);
+  const axiosSecure = UseAxiosSecure();
 
-
-  useEffect(() => {
-    if (user?.email) {
-      const fetchData = async () => {
-        const url = `https://server-side-rho-lemon.vercel.app/my-req-post?email=${user.email}`;
-        try {
-          const res = await fetch(url);
-          const value = await res.json();
-          setReqData(value);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      };
-      fetchData();
-    }
-  }, [user?.email]);
 
   // useEffect(() => {
   //   if (user?.email) {
-  //     axiosSecure
-  //       .get(`/my-req-post?email=${user.email}`)
-  //       .then((res) => setReqData(res.data))
-  //       .catch((error) => console.error("Error fetching data:", error));
+  //     const fetchData = async () => {
+  //       const url = `https://server-side-rho-lemon.vercel.app/my-req-post?email=${user.email}`;
+  //       try {
+  //         const res = await fetch(url);
+  //         const value = await res.json();
+  //         setReqData(value);
+  //       } catch (error) {
+  //         console.error("Error fetching data:", error);
+  //       }
+  //     };
+  //     fetchData();
   //   }
   // }, [user?.email]);
+
+  useEffect(() => {
+    if (user?.email) {
+      axiosSecure
+        .get(`/my-req-post?email=${user.email}`)
+        .then((res) => setReqData(res.data))
+        .catch((error) => console.error("Error fetching data:", error));
+    }
+  }, [user?.email]);
   
 
   const handleDelete = (_id) => {

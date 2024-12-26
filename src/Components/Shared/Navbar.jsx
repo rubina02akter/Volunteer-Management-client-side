@@ -147,7 +147,8 @@ const Navbar = () => {
               >
                 <div
                   title={user?.displayName || "User"}
-                  className="w-10 rounded-full"
+                  className="w-10 rounded-full tooltip" 
+                  data-tip={user?.displayName}
                 >
                   <img
                     referrerPolicy="no-referrer"

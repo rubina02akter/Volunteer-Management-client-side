@@ -1,4 +1,7 @@
 import axios from "axios";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "./AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -9,31 +12,31 @@ const axiosInstance = axios.create({
 
 const UseAxiosSecure = () => {
 
-  // const{signOutUser} = useContext(AuthContext);
-  // const navigate = useNavigate();
-  // console.log('hi');
+  const{signOutUser} = useContext(AuthContext);
+  const navigate = useNavigate();
+  console.log('hi');
 
-  // useEffect(() => {
-  //   axiosInstance.interceptors.response.use(response => {
-  //     return response ;
-  //   }, error => {
-  //     console.log('error caught in interceptor',error)
+  useEffect(() => {
+    axiosInstance.interceptors.response.use(response => {
+      return response ;
+    }, error => {
+      console.log('error caught in interceptor',error)
 
-  //     if(error.status === 401 || error.status === 403){
-  //       console.log('need to log out this user')
-  //       signOutUser()
-  //       .then(()=>{
-  //         console.log('logged out user')
-  //         navigate('/login')
-  //       })
-  //       .catch(error => {
-  //         console.log('error',error)
-  //       })
-  //     }
+      if(error.status === 401 || error.status === 403){
+        console.log('need to log out this user')
+        signOutUser()
+        .then(()=>{
+          console.log('logged out user')
+          navigate('/login')
+        })
+        .catch(error => {
+          console.log('error',error)
+        })
+      }
 
-  //     return Promise.reject(error)
-  //   } )
-  // },[])
+      return Promise.reject(error)
+    } )
+  },[])
 
   return axiosInstance;
 };
