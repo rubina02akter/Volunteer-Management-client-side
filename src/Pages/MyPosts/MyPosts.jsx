@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 
 
@@ -79,6 +80,7 @@ const MyPosts = () => {
   };
 
   console.log(emails);
+  
   return (
  <>
     <Helmet>
@@ -188,9 +190,11 @@ const MyPosts = () => {
     )}
   </div>
 
-  {/* <div className="text-center my-3 font-extrabold text-2xl underline">
-    <h2>My Volunteer Request Post</h2>
-  </div> */}
+  <div className="flex justify-center my-3 font-extrabold text-2xl ">
+    <Link to='/my-req-post'><button className="btn bg-green-800 text-white">My Volunteer Request Post <FaArrowCircleRight></FaArrowCircleRight></button></Link>
+  </div>
+
+
 
 
 

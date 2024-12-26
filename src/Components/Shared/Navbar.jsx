@@ -52,9 +52,9 @@ const Navbar = () => {
               </li>
             </ul>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/my-req-post">My Req Post</NavLink>
-          </li>
+          </li> */}
         </>
       )}
     </>
