@@ -5,12 +5,6 @@ import bg from "../../assets/images/cool-background.png";
 const Footer = () => {
   return (
     <div className="">
-      {/* Top Colored Sections */}
-      {/* <div className="grid grid-cols-3">
-        <div className="border-4 border-green-700"></div>
-        <div className="border-4 border-yellow-400"></div>
-        <div className="border-4 border-red-600"></div>
-      </div> */}
 
       {/* Main Footer Section */}
       <div
@@ -18,11 +12,6 @@ const Footer = () => {
         style={{ backgroundImage: `url(${bg})` }}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div>
-          <h2 className="text-center mb-7 text-3xl font-extrabold ">
-          Everyone can help! 
-          </h2>
-        </div>
 
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start w-10/12 mx-auto gap-8 relative">
           {/* Footer Image */}
@@ -40,9 +29,9 @@ const Footer = () => {
               <h6 className="footer-title text-lg font-extrabold mb-3">
                 Services
               </h6>
-              <a className="link link-hover block">Branding</a>
-              <a className="link link-hover block">Design</a>
-              <a className="link link-hover block">Marketing</a>
+              <a className="link link-hover block">Hepling</a>
+              <a className="link link-hover block">Donating</a>
+              <a className="link link-hover block">Funding</a>
               <a className="link link-hover block">Advertisement</a>
             </nav>
             <nav>

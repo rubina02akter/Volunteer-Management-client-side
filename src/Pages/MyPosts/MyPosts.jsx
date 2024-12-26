@@ -1,41 +1,46 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import { FaArrowCircleRight } from "react-icons/fa";
+import MyReqPost from "../MyReqPost/MyReqPost";
+
+
 
 
 
 const MyPosts = () => {
 
   const { user,emails, setEmails } = useContext(AuthContext);
+
+
   console.log(user);
 
 
-  // useEffect(() => {
-  //   if (user.email) {
-  //     const data = async () => {
-  //       const url = `https://server-side-rho-lemon.vercel.app/my-posts?email=${user.email}`;
-  //       const res = await fetch(url);
-  //       const value = await res.json();
-  //       setEmails(value);
-  //     };
-  //     data();
-  //   }
-  // }, [user?.email]);
+
   useEffect(() => {
-    axios.get(`https://server-side-rho-lemon.vercel.app/my-posts?email=${user.email}`,{
-      withCredentials: true
-    })
-    .then(res=>setEmails(res.data))
+    if (user.email) {
+      const data = async () => {
+        const url = `https://server-side-rho-lemon.vercel.app/my-posts?email=${user.email}`;
+        const res = await fetch(url);
+        const value = await res.json();
+        setEmails(value);
+      };
+      data();
+    }
+  }, [user?.email]);
+  // useEffect(() => {
+  //   axios.get(`https://server-side-rho-lemon.vercel.app/my-posts?email=${user.email}`,{
+  //     withCredentials: true
+  //   })
+  //   .then(res=>setEmails(res.data))
 
     // secureAxios.get(`my-posts?email=${user.email}`)
     // .then(res=>setEmails(res.data))
     
 
-  }, [user?.email]);
+  // }, [user?.email]);
 
  
 
@@ -191,7 +196,11 @@ const MyPosts = () => {
   </div>
 
   <div className="flex justify-center my-3 font-extrabold text-2xl ">
-    <Link to='/my-req-post'><button className="btn bg-green-800 text-white">My Volunteer Request Post <FaArrowCircleRight></FaArrowCircleRight></button></Link>
+    <h2 className="underline">My Volunteer Request Post</h2>
+  </div>
+
+  <div>
+    <MyReqPost></MyReqPost>
   </div>
 
 

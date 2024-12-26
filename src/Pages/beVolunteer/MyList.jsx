@@ -3,6 +3,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import DatePicker from "react-datepicker";
 
 const MyList = () => {
   const { user,theme } = useContext(AuthContext);
@@ -10,6 +11,7 @@ const MyList = () => {
   const { displayName, email } = user;
   const [loadData, setLoadData] = useState();
   const { _id } = useParams();
+  const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
     axios
@@ -168,17 +170,17 @@ const MyList = () => {
             />
           </div>
 
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text font-medium">Deadline</span>
-            </label>
-            <input
-              type="date"
-              value={deadline}
-              className="input input-bordered w-full"
-              readOnly
-            />
-          </div>
+          <div className="flex flex-col gap-2">
+              <label className="text-gray-700">Deadline</label>
+              <DatePicker
+                className="border p-2 rounded-md"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                name="deadline"
+                dateFormat="d/M/yy" 
+                readOnly
+              />
+            </div>
 
           <div className="form-control">
             <label className="label">

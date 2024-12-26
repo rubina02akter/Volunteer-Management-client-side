@@ -7,12 +7,12 @@ import AllPost from "../Pages/AllVolNeedPosts/AllPost";
 import PostDetails from "../Pages/AllVolNeedPosts/PostDetails";
 import CardsDetail from "../Pages/Home/CardsDetail";
 import AddPost from "../Pages/AddPost/AddPost";
-import MyPosts from "../Pages/MyPosts/MyPosts";
 import PrivateRoute from "./PrivateRoute";
 import UpdateMyPost from "../Pages/MyPosts/UpdateMyPost";
 import Error from "../Components/Error";
 import MyReqPost from "../Pages/MyReqPost/MyReqPost";
 import MyList from "../Pages/beVolunteer/MyList";
+import MyPosts from "../Pages/MyPosts/MyPosts";
 
 
 
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
      
       {
         path:'/my-posts',
-        element:<PrivateRoute><MyPosts /></PrivateRoute>,
+        element:<PrivateRoute><MyPosts></MyPosts></PrivateRoute>,
 
       },
       {

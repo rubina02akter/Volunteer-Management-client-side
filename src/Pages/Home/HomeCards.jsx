@@ -16,7 +16,7 @@ const HomeCards = ({ card }) => {
   } = card;
 
   return (
-    <div className={`card  border rounded-lg shadow-lg p-4 ${theme === 'dark'? ' bg-white text-black' : "bg-[#DEE5D9]"}`}>
+    <div className={`card  border rounded-lg shadow-lg p-4 ${theme === 'dark'? ' bg-white text-black' : "bg-[#DEE5D9]"}`} >
      <div className="h-36">
        {/* Category Badge */}
        <div className="mb-2">

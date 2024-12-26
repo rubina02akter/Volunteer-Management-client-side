@@ -3,7 +3,6 @@ import img2 from '../../assets/sectionImg/Screenshot 2024-12-25 at 11.35.04 PM.p
 import img3 from '../../assets/sectionImg/Screenshot 2024-12-25 at 11.38.26 PM.png';
 import img4 from '../../assets/sectionImg/Screenshot 2024-12-25 at 11.38.45 PM.png';
 
-
 const ImgSection = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 w-11/12 mx-auto">

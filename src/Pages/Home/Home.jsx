@@ -7,6 +7,7 @@ import ImgSection from "./ImgSection";
 import SectionTwo from "./SectionTwo";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Helmet } from "react-helmet";
+import Marquee from "./Marquee";
 
 const Home = () => {
   const [cards, setCards] = useState([]);
@@ -62,6 +63,9 @@ const Home = () => {
       </div>
       <div>
         <SectionTwo></SectionTwo>
+      </div>
+      <div>
+        <Marquee></Marquee>
       </div>
     </div>
   );

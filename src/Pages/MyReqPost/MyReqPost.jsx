@@ -1,9 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
+
 const MyReqPost = () => {
-  const { user, emails, setEmails } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const [reqData, setReqData] = useState([]);
+
 
   useEffect(() => {
     if (user?.email) {
@@ -12,7 +15,7 @@ const MyReqPost = () => {
         try {
           const res = await fetch(url);
           const value = await res.json();
-          setEmails(value);
+          setReqData(value);
         } catch (error) {
           console.error("Error fetching data:", error);
         }
@@ -20,6 +23,16 @@ const MyReqPost = () => {
       fetchData();
     }
   }, [user?.email]);
+
+  // useEffect(() => {
+  //   if (user?.email) {
+  //     axiosSecure
+  //       .get(`/my-req-post?email=${user.email}`)
+  //       .then((res) => setReqData(res.data))
+  //       .catch((error) => console.error("Error fetching data:", error));
+  //   }
+  // }, [user?.email]);
+  
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -53,8 +66,8 @@ const MyReqPost = () => {
               });
 
               // Update the state to reflect the deleted post
-              const remainingCards = emails.filter((card) => card._id !== _id);
-              setEmails(remainingCards);
+              const remainingCards = reqData.filter((card) => card._id !== _id);
+              setReqData(remainingCards);
             }
           })
           .catch((err) => {
@@ -71,7 +84,7 @@ const MyReqPost = () => {
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8 ">
-      {emails && emails.length > 0 ? (
+      {reqData && reqData.length > 0 ? (
         <div>
           {/* Table for Large Devices */}
           <div className="hidden lg:block">
@@ -85,7 +98,7 @@ const MyReqPost = () => {
                 </tr>
               </thead>
               <tbody>
-                {emails.map((card, index) => {
+                {reqData.map((card, index) => {
                   const { _id, title, category } = card;
                   return (
                     <tr key={_id} className="border-b hover:bg-gray-50">
@@ -113,7 +126,7 @@ const MyReqPost = () => {
 
           {/* Cards for Small Devices */}
           <div className="grid gap-4 lg:hidden">
-            {emails.map((card, index) => {
+            {reqData.map((card, index) => {
               const { _id, title, category } = card;
               return (
                 <div
@@ -145,14 +158,13 @@ const MyReqPost = () => {
       ) : (
         <div className="text-center py-10">
           <p className="text-gray-600 text-lg">
-            No posts found. Please add a post through the “Add volunteer need
-            post” page.
+            No request found. Please add a request through the “Be volunteer
+            button” on the all posts page.
           </p>
         </div>
       )}
     </div>
   );
 };
-
 
 export default MyReqPost;
