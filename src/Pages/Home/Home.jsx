@@ -8,6 +8,8 @@ import SectionTwo from "./SectionTwo";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Helmet } from "react-helmet";
 import Marquee from "./Marquee";
+import SectionOne from "./SectionOne";
+import SectionThree from "./SectionThree";
 
 const Home = () => {
   const [cards, setCards] = useState([]);
@@ -66,6 +68,10 @@ const Home = () => {
       </div>
       <div>
         <Marquee></Marquee>
+      </div>
+      <div>
+        <SectionOne></SectionOne>
+        <SectionThree></SectionThree>
       </div>
     </div>
   );
